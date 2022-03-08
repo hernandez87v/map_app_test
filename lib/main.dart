@@ -25,7 +25,7 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
-  Completer<GoogleMapController> _controller = Completer();
+  late GoogleMapController _controller;
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(49.274875741657354, -123.1035166857423),
@@ -39,7 +39,7 @@ class MapSampleState extends State<MapSample> {
       zoom: 19.151926040649414);
 
   Future<void> onMapCreated(GoogleMapController controller) async {
-    _controller = controller as Completer<GoogleMapController>;
+    _controller = controller;
     String value = await DefaultAssetBundle.of(context)
         .loadString('assets/map_style.json');
     _controller.setMapStyle(value);
@@ -49,7 +49,7 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        // mapType: MapType.hybrid,
         onMapCreated: onMapCreated,
         initialCameraPosition: _kGooglePlex,
       ),
@@ -62,7 +62,7 @@ class MapSampleState extends State<MapSample> {
   }
 
   Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
+    final GoogleMapController controller = _controller;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
