@@ -49,9 +49,11 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-        // mapType: MapType.hybrid,
-        onMapCreated: onMapCreated,
         initialCameraPosition: _kGooglePlex,
+        onMapCreated: onMapCreated,
+        // mapType: MapType.hybrid,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
