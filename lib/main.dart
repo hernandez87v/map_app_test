@@ -38,6 +38,20 @@ class MapSampleState extends State<MapSample> {
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 
+  Set<Marker> _createMarker() {
+    return {
+      const Marker(
+          markerId: MarkerId("Metro Traffic Management"),
+          position: LatLng(49.271187266841416, -123.01609499352571),
+          infoWindow: InfoWindow(title: 'Metro TM'),
+          rotation: 90),
+      const Marker(
+        markerId: MarkerId("marker_2"),
+        position: LatLng(50.271187266841416, -123.01609499352571),
+      ),
+    };
+  }
+
   Future<void> onMapCreated(GoogleMapController controller) async {
     _controller = controller;
     String value = await DefaultAssetBundle.of(context)
@@ -54,6 +68,7 @@ class MapSampleState extends State<MapSample> {
         // mapType: MapType.hybrid,
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
+        markers: _createMarker(),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
