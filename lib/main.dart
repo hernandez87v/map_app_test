@@ -40,11 +40,12 @@ class MapSampleState extends State<MapSample> {
 
   Set<Marker> _createMarker() {
     return {
-      const Marker(
-          markerId: MarkerId("Metro Traffic Management"),
-          position: LatLng(49.271187266841416, -123.01609499352571),
-          infoWindow: InfoWindow(title: 'Metro TM'),
-          rotation: 90),
+      Marker(
+        markerId: const MarkerId("Work"),
+        position: const LatLng(49.271187266841416, -123.01609499352571),
+        infoWindow: const InfoWindow(title: 'Metro Traffic Management'),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+      ),
       const Marker(
         markerId: MarkerId("marker_2"),
         position: LatLng(50.271187266841416, -123.01609499352571),
