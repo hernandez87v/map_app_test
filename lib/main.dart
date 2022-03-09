@@ -70,6 +70,7 @@ class MapSampleState extends State<MapSample> {
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
         markers: _createMarker(),
+        trafficEnabled: true,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
